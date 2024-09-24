@@ -46,11 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e31524a7493eb849930f560f645cf51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelColliders: {fileID: 7936080568897980610}
+  wheelCollider: {fileID: 7936080568897980610}
   wheelBodies: {fileID: 7157770991822341007}
-  thisWheel: {fileID: 778216489733521436}
   frontWheel: 0
-  speed: 0
 --- !u!1 &1602691692149598147
 GameObject:
   m_ObjectHideFlags: 0

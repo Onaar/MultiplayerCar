@@ -19,17 +19,21 @@ public class DrivingScript : MonoBehaviour
         brake = Mathf.Clamp(brake, 0, 1) * maxBrakeTorque;
 
         float thrustTorque = 0;
-        if (currentSpeed < maxSpeed) thrustTorque = accel * torque;
+        if (currentSpeed < maxSpeed && currentSpeed > -maxSpeed) thrustTorque = accel * torque;
         foreach (WheelScript wheel in wheels)
         {
             wheel.GetWheelCollider().motorTorque = thrustTorque;
-            if (wheel.IsFrontWheel()) wheel.GetWheelCollider().steerAngle = steer;
-            else wheel.GetWheelCollider().brakeTorque = brake;
+            if (wheel.IsFrontWheel())
+            {
+                wheel.GetWheelCollider().steerAngle = steer;
+            }
+            wheel.GetWheelCollider().brakeTorque = brake;
             Quaternion quat;
             Vector3 position;
             wheel.GetWheelCollider().GetWorldPose(out position, out quat);
             wheel.GetWheelBodies().transform.position = position;
             wheel.GetWheelBodies().transform.rotation = quat;
+            currentSpeed = wheel.GetWheelCollider().rpm;
         }
     }
 }
