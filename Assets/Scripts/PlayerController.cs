@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
         float steer = Input.GetAxis("Horizontal");
         float brake = Input.GetAxis("Jump");
         bool flip = Input.GetKeyDown(KeyCode.F);
+        if (!RaceController.RACING) accel = 0;
         driveScript.Drive(accel, brake, steer);
 
         if (flip)
